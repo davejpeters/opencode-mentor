@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "types": [
+      "bun"
+    ],
+    "target": "ESNext",
+    "module": "preserve",
+    "lib": [
+      "ES2020"
+    ],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "noEmit": true
+  },
+  "include": [
+    "plugins/**/*",
+    "tools/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

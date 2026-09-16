@@ -1,0 +1,12 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "theme": "system",
+  "scroll_acceleration": {
+    "enabled": true
+  },
+  "attention": {
+    "enabled": true,
+    "notifications": true,
+    "sound": false,
+  },
+}

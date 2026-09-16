@@ -1,0 +1,41 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "mentor-orchestrator",
+  "instructions": [
+    "rules/general.md"
+  ],
+  "share": "disabled",
+  "snapshot": true,
+  "lsp": true,
+  "permission": {
+    "bash": {
+      "*": "ask",
+      "speak": "allow",
+      "bd *": "allow",
+      "git diff *": "allow",
+      "git log *": "allow",
+      "git status *": "allow",
+      "go test *": "allow",
+      "graphify *": "allow",
+    },
+    "webfetch": "ask",
+    "doom_loop": "ask",
+    "external_directory": "ask",
+    "tool": {
+      "*": "allow"
+    }
+  },
+  "mcp": {
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": true
+    },
+  },
+  "plugin": [
+    "./plugins/env-protection.ts",
+    "./plugins/safety-filter.ts",
+    "./plugins/context-loader.ts",
+    "./plugins/notifications.ts"
+  ]
+}
