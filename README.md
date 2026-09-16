@@ -108,7 +108,3 @@ These are guardrails, not a security sandbox. Inspect proposed commands and chan
 - `plugins/notifications.ts` calls `notify-send` for idle-session and permission-request desktop notifications. It is intended for Linux desktops with a notification daemon; remove the plugin from `opencode.json` elsewhere.
 
 The notification plugin tolerates command failures.
-
-## License
-
-No license is currently declared. Add one before inviting redistribution or contributions.
