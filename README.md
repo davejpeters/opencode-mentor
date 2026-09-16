@@ -109,26 +109,6 @@ These are guardrails, not a security sandbox. Inspect proposed commands and chan
 
 The notification plugin tolerates command failures.
 
-## Maintainer: Publishing Safely
-
-Publish from a **fresh repository**, not by rewriting or mirroring this working repository. This prevents accidental disclosure of old commits, deleted secrets, tags, or private branches.
-
-1. Create an empty staging directory outside this checkout.
-2. Copy only an explicit, reviewed allowlist of public files into it.
-3. Do **not** copy `.git/`, `.env.example`, `.agents/`, `.beads/`, `.claude/`, `.codex/`, `.opencode/`, `package-lock.json`, any ignored file, runtime learner state, or personal metadata.
-4. Search the staged files for secrets and absolute personal paths, then review every file and `git diff --cached` before committing.
-5. Initialize a new repository whose only branch is `main`:
-
-   ```bash
-   git init -b main
-   git add --all
-   git commit -m "Initial public release"
-   git remote add origin <public-repository-url>
-   git push -u origin main
-   ```
-
-Never use `git push --all`, `git push --mirror`, or push tags from the private working repository. Confirm on the remote that only `main` exists and that excluded files are absent.
-
 ## License
 
 No license is currently declared. Add one before inviting redistribution or contributions.
