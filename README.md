@@ -2,7 +2,7 @@
 
 MAI is an opinionated [OpenCode](https://opencode.ai/) configuration for learning software development with AI. It is inspired by [Boot.dev](https://boot.dev/) and [PAI](https://github.com/danielmiessler/pai), with a mentor-first goal: use AI to strengthen reasoning and independent problem-solving, not merely to produce code quickly.
 
-The default assistant is **Rob**, a learning orchestrator that routes work to specialist agents. The prompts favor diagnosis, small hints, deliberate practice, review, verification, and gradually reduced support. This repository is configuration and an evolving experiment, not a claim that AI can replace teachers, experience, or independent judgment.
+The default assistant a learning orchestrator that routes work to specialist agents. The prompts favor diagnosis, small hints, deliberate practice, review, verification, and gradually reduced support. This repository is configuration and an evolving experiment, not a claim that AI can replace teachers, experience, or independent judgment.
 
 ## Architecture
 
@@ -15,22 +15,22 @@ OpenCode
   -> local learner state and session reflection
 ```
 
-- `opencode.json` selects the primary agent, loads plugins, configures Context7, and defines baseline permissions.
-- `AGENTS.md` establishes the Rob identity and repository-wide operating rules.
-- `agents/` contains the orchestrator and specialist prompts.
-- `skills/core/SKILL.md` supplies the shared tutoring policy at runtime.
-- `tools/tutor.ts` exposes learner-profile, concept-graph, curriculum, exercise, grading, and reflection tools implemented under `tools/tutor/`.
+- [opencode.json](opencode.json) selects the primary agent, loads plugins, configures Context7, and defines baseline permissions.
+- [AGENTS.md](AGENTS.md) establishes the Rob identity and repository-wide operating rules.
+- [agents](agents/) contains the orchestrator and specialist prompts.
+- [core](skills/core/SKILL.md) supplies the shared tutoring policy at runtime.
+- [tutor](tools/tutor.ts) exposes learner-profile, concept-graph, curriculum, exercise, grading, and reflection tools implemented under `tools/tutor/`.
 - `plugins/context-loader.ts` injects the shared Core policy once per session.
 
 ## Agent Roles
 
 | Agent               | Responsibility                                                                                                   |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Mentor Orchestrator | Classifies requests, retrieves only relevant learner context, and delegates to a specialist.                     |
-| Mentor              | Explains concepts, diagnoses errors, and gives the least help needed for progress.                               |
-| Reviewer            | Reviews submitted work for correctness, design, security, and learning evidence without rewriting it by default. |
-| Architect           | Explores system boundaries, data flow, constraints, and trade-offs.                                              |
-| Drill Instructor    | Creates focused exercises, evaluates attempts, and adjusts difficulty from observed results.                     |
+| [Mentor Orchestrator](agents/mentor-orchestrator.md) | Classifies requests, retrieves only relevant learner context, and delegates to a specialist. |
+| [Mentor](agents/mentor.md) | Explains concepts, diagnoses errors, and gives the least help needed for progress. |
+| [Reviewer](agents/reviewer.md) | Reviews submitted work for correctness, design, security, and learning evidence without rewriting it by default. |
+| [Architect](agents/architect.md) | Explores system boundaries, data flow, constraints, and trade-offs. |
+| [Drill Instructor](agents/drill-instructor.md) | Creates focused exercises, evaluates attempts, and adjusts difficulty from observed results. |
 
 A pair-programmer prompt is included but disabled by default so the mentor-first workflow remains the primary path. OpenCode's built-in `explore` agent is used for codebase discovery where permitted.
 
@@ -39,24 +39,13 @@ A pair-programmer prompt is included but disabled by default so the mentor-first
 - [`PEDAGOGY.md`](PEDAGOGY.md) explains the educational rationale and vocabulary.
 - [`skills/core/SKILL.md`](skills/core/SKILL.md) is the operational source of truth for tutoring behavior.
 - Role prompts in `agents/` specialize Core without replacing it.
-- `skills/assignment/` defines learner-owned practice tasks; the other skills add focused workflows such as review, TDD, security, and Go development.
+- [assignment](skills/assignment/SKILL.ms) defines learner-owned practice tasks; the other skills add focused workflows such as review, TDD, security, and Go development.
 
 The central loop is **diagnose → teach → practice → assess → reflect → progress**. Assistance is calibrated to demonstrated work, and the system aims to fade scaffolding as the learner becomes more independent.
 
-## Repository Layout
+## Learner State
 
-| Path          | Purpose                                                                                     |
-| ------------- | ------------------------------------------------------------------------------------------- |
-| `agents/`     | Primary and specialist agent definitions.                                                   |
-| `commands/`   | Reusable OpenCode command prompts.                                                          |
-| `plugins/`    | Context loading, environment protection, command filtering, and desktop notifications.      |
-| `rules/`      | Language- and workflow-specific instructions.                                               |
-| `skills/`     | Loadable guidance for pedagogy and engineering workflows.                                   |
-| `tools/`      | Tutor-state tools and small utilities such as JSON validation, date/time, math, and speech. |
-| `PEDAGOGY.md` | Maintainer-facing teaching model.                                                           |
-| `BACKLOG.md`  | Planned improvements.                                                                       |
-
-Runtime learner state is written inside each active project under `.opencode/mentor/`. It can contain learner identifiers, project paths, goals, evidence, misconceptions, exercises, and reflections. **Runtime learner state and personal metadata are intentionally not distributed with this public configuration.**
+Runtime learner state is written inside each active project under `.opencode/mentor/`. It can contain learner identifiers, project paths, goals, evidence, misconceptions, exercises, and reflections. 
 
 ## Prerequisites and Setup
 
@@ -64,7 +53,6 @@ Prerequisites:
 
 - A working OpenCode installation.
 - [Bun](https://bun.sh/) for the TypeScript tools and plugins.
-- Git for installation and updates.
 - Optional: [Context7 MCP](https://github.com/upstash/context7) network access for current library documentation, [beads](https://github.com/steveyegge/beads) for issue tracking, [graphify](https://github.com/Graphify-Labs/graphify) or [codegraph](https://github.com/colbymchenry/codegraph) for codebase discovery.
 
 Back up any existing OpenCode configuration before installing. Then clone this repository as the global configuration and install its development dependency:
