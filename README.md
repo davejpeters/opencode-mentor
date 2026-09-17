@@ -36,10 +36,10 @@ A pair-programmer prompt is included but disabled by default so the mentor-first
 
 ## Pedagogy
 
-- [`PEDAGOGY.md`](PEDAGOGY.md) explains the educational rationale and vocabulary.
-- [`skills/core/SKILL.md`](skills/core/SKILL.md) is the operational source of truth for tutoring behavior.
+- [PEDAGOGY](PEDAGOGY.md) explains the educational rationale and vocabulary.
+- [core](skills/core/SKILL.md) is the operational source of truth for tutoring behavior.
 - Role prompts in `agents/` specialize Core without replacing it.
-- [assignment](skills/assignment/SKILL.ms) defines learner-owned practice tasks; the other skills add focused workflows such as review, TDD, security, and Go development.
+- [assignment](skills/assignment/SKILL.md) defines learner-owned practice tasks; the other skills add focused workflows such as review, TDD, security, and Go development.
 
 The central loop is **diagnose → teach → practice → assess → reflect → progress**. Assistance is calibrated to demonstrated work, and the system aims to fade scaffolding as the learner becomes more independent.
 
