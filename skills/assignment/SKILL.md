@@ -24,6 +24,23 @@ Do not use this skill as a substitute for:
 
 If an error, failed test, or broken step appears during an assignment, use the Debugging Checkpoint in this skill rather than generating a new full assignment.
 
+## Pedagogical Style
+
+This skill defaults to guided implementation for novice and early-intermediate learners.
+
+A assignment should:
+
+- Break the task into small sequential implementation steps.
+- Introduce only one main concept at a time.
+- Name concrete artifacts when known: functions, files, inputs, outputs, or commands.
+- Use tiny helper functions or intermediate structures when they reduce cognitive load.
+- Show concrete examples of data shapes at important transitions.
+- Separate algorithmic work from formatting, integration, or polish when possible.
+- Require immediate verification through tests, commands, or observable program output.
+- Avoid providing the complete finished solution unless the learner has exhausted appropriate support.
+
+For more advanced learners, reduce scaffolding and return to outcome-oriented requirements.
+
 ## Required Context
 
 Before generating an assignment, establish:
@@ -47,8 +64,8 @@ Do not invent exact files, commands, APIs, test names, or project structure. Lab
 Identify the target concept and its essential prerequisites before assigning implementation work.
 
 - If a prerequisite is demonstrated, proceed.
-- If a prerequisite is uncertain, ask one short diagnostic question or prediction task.
-- If a prerequisite is missing, make that prerequisite the current assignment.
+- If a prerequisite is uncertain, either ask one short diagnostic question or include the smallest prerequisite explanation needed to make the next step possible. Do not turn the explanation into a full lecture.
+  If a prerequisite is missing, make that prerequisite the current assignment.
 - Do not hide required syntax or tool operation behind a hint when it is itself the missing prerequisite.
 
 An assignment should create productive practice, not test knowledge the learner has never been taught.
@@ -57,17 +74,21 @@ An assignment should create productive practice, not test knowledge the learner 
 
 Default to one guided assignment or checkpoint at a time.
 
-For a novice or a learner without evidence of the relevant foundations, show only:
+For a novice or a learner without evidence of the relevant foundations, show one small assignment composed of ordered micro-steps.
 
-- A clear objective
-- A concrete scenario
-- Explicit behavioral requirements
-- Necessary constraints
-- One to three outcome-oriented checkpoint actions
-- A practical verification method
-- An exact report-back request
+The assignment should include:
 
-If future milestones need to be named, mention them in one short sentence at the end of `Description`. Do not add a separate section or expand future steps until the learner completes the current checkpoint.
+- A clear objective.
+- A concrete scenario.
+- The exact artifact to modify or create, when known.
+- Small sequential steps that build toward the result.
+- Concrete examples of the data shape after important steps.
+- A practical verification method.
+- An exact report-back request.
+
+Prefer one assignment with 3-7 tiny micro-steps over one vague task. Each micro-step should have a visible result or move the learner closer to a visible result.
+
+If future milestones need to be named, mention them briefly in the description and do not expand them until the learner completes the current checkpoint.
 
 For an intermediate learner, provide the current checkpoint and concise completion criteria while leaving local implementation choices to the learner. Mention at most the next one or two checkpoints when sequence matters.
 
@@ -77,22 +98,79 @@ If the learner cannot make progress, increase the scaffolding through the Hint B
 
 ## Assignment Quality
 
-Write assignments in implementation-neutral language.
+Assignments should be concrete, sequential, and verifiable.
 
-The assignment should describe what must be true when the learning is finished.
+For novice learners, prefer guided implementation over broad outcome-only prompts. It is acceptable to name the next function, helper, data structure, or file when those details are part of the learning path or already exist in the project.
 
 A good assignment should:
 
 - State one learning objective.
 - Present a concrete problem or scenario.
-- Define observable behavioral requirements.
+- Decompose the work into small ordered steps.
+- Include concrete examples of input, output, or intermediate data shape.
 - Introduce at most one unfamiliar concept.
-- State relevant constraints without prescribing a solution.
-- Contain one to three outcome-oriented checkpoint actions.
-- Provide a practical method for verifying success.
-- Require the learner to report evidence of the result.
+- Defer unrelated concerns to later lessons.
+- Provide an immediate verification method.
+- Ask the learner to report test output or observed behavior.
 
-Actions are outcome-oriented checkpoints. They state what the learner should accomplish and may clarify scope, location, or order, but must not reveal target abstractions, control flow, syntax, or procedure. Implementation guidance belongs in Core-governed support after the learner attempts the assignment. Present alternatives as a bounded choice, not as simultaneous work.
+Do not give a full copy-paste solution in the initial assignment. Instead, describe the next small piece of code the learner should create and what behavior it must have.
+
+Actions are small ordered implementation steps.
+
+For novice assignments, actions may name the intended helper function, intermediate collection, loop, conditional, or return value when that guidance is necessary for productive practice. The action should still avoid providing the full final code.
+
+Each action should clarify:
+
+- What artifact the learner is changing.
+- What small behavior should exist after the step.
+- What example input or intermediate value should look like, when useful.
+- Whether the learner should verify now or continue to the next micro-step.
+
+For intermediate and advanced learners, reduce procedural detail and make actions more outcome-oriented.
+
+## Concrete Examples
+
+When the assignment involves data transformation, include at least one concrete example of the data before and after the relevant step.
+
+Examples may show:
+
+- A sample function argument.
+- A sample return value.
+- The shape of an intermediate list, dictionary, tuple, object, or record.
+- A simple before/after transformation.
+
+Examples should be small enough to understand at a glance. They should clarify the target behavior without solving the entire assignment.
+
+## Cognitive Load Management
+
+When a task naturally contains multiple concerns, isolate the concern being practiced.
+
+Prefer to defer:
+
+- Output formatting.
+- UI polish.
+- Error handling beyond the current concept.
+- Performance optimization.
+- Refactoring.
+- Integration with unrelated systems.
+
+Explicitly tell the learner what is intentionally out of scope for this checkpoint.
+
+Example:
+
+"For this checkpoint, return the raw sorted list. Formatting the final report will happen in the next assignment."
+
+## Solution Boundary
+
+Guided steps may describe what to build, where to build it, and what behavior it should have.
+
+They should not include the complete final implementation unless:
+
+- The learner explicitly asks after meaningful attempts, or
+- The missing piece is syntax/tooling rather than the target concept, or
+- Higher-priority tutoring instructions require direct instruction.
+
+Prefer partial structure, examples, and expected behavior over full code.
 
 ## Assignment Output Format
 
@@ -126,7 +204,11 @@ State uncertain assumptions.>
 
 ## Actions
 
-- <One outcome-oriented action with any required substeps indented beneath it.>
+- <Step 1: Small concrete implementation step.>
+  - <Optional example input/output or intermediate data shape.>
+- <Step 2: Next small implementation step.>
+- <Step 3: Integration or verification-oriented step.>
+- <Repeat for as many steps as needed to complete the assignment.>
 
 ## Verify
 
@@ -140,9 +222,24 @@ how to produce it.>
 of an important design decision.>
 ```
 
-For novices, show one to three `Action` bullets. Verification and report-back do not count toward that action limit. For learners who have demonstrated greater independence, show additional `Action` bullets only when the adaptive sizing rules permit it.
+For novices, show three to seven small ordered action bullets, or one to three larger action bullets with nested micro-steps. Verification and report-back do not count toward that limit.
+
+For learners who have demonstrated greater independence, show additional `Action` bullets only when the adaptive sizing rules permit it.
 
 Do not turn the template into ceremony. Optional second and third `Action` bullets may be omitted, but every assignment must retain its description, requirements, actions, verification, and report-back guidance. The assignment should be shorter than the work it enables and small enough for the learner to act on immediately.
+
+### Actions Pattern
+
+A novice assignment should often look like this:
+
+1. Create a small helper with one responsibility.
+   1.1. Confirm the helper’s expected input and output shape.
+2. Use the helper inside the larger transformation.
+3. Produce a simple raw result.
+4. Run the provided verification.
+5. Defer formatting, polish, or larger integration until the next checkpoint.
+
+The assignment should feel like a guided lab, not a broad project brief.
 
 ## Requirements
 
