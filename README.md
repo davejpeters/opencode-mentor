@@ -1,5 +1,8 @@
 # MAI: Mentor AI Infrastructure for OpenCode
 
+> [!NOTE]
+> This repo is not yet ready for OpenCode v2 and runs on any version of OpenCode prior to v2. 
+
 MAI is an opinionated [OpenCode](https://opencode.ai/) configuration for learning software development with AI. It is inspired by [Boot.dev](https://boot.dev/) and [PAI](https://github.com/danielmiessler/pai), with a mentor-first goal: use AI to strengthen reasoning and independent problem-solving, not merely to produce code quickly.
 
 The default assistant a learning orchestrator that routes work to specialist agents. The prompts favor diagnosis, small hints, deliberate practice, review, verification, and gradually reduced support. This repository is configuration and an evolving experiment, not a claim that AI can replace teachers, experience, or independent judgment.
